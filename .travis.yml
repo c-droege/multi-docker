@@ -14,7 +14,8 @@ after_success:
   - docker build -t gulliva/multi-server ./server
   - docker build -t gulliva/multi-worker ./worker
   #Log in to the Docker cli
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
   #Take the images and push them to docker hub
   - docker push gulliva/multi-client
   - docker push gulliva/multi-nginx
