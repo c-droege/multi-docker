@@ -21,3 +21,15 @@ after_success:
   - docker push gulliva/multi-server
   - docker push gulliva/multi-worker
   #
+deploy: 
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-1-431154289357
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_ID
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
